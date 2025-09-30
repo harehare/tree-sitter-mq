@@ -1,6 +1,6 @@
 # tree-sitter-mq
 
-Tree-sitter grammar for the mq language.
+Tree-sitter grammar for the mq.
 
 ## Overview
 
