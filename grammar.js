@@ -303,9 +303,11 @@ module.exports = grammar({
     nodes: (_) => "nodes",
 
     // Literals
-    _literal: ($) => choice($.number, $.string, $.boolean, $.none),
+    _literal: ($) => choice($.number, $.string, $.boolean, $.none, $.symbol),
 
     identifier: (_) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
+    symbol: (_) => token(seq(":", /[a-zA-Z_][a-zA-Z0-9_]*/)),
 
     number: (_) => {
       const decimal = /[0-9]+/;
