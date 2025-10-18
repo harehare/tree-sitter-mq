@@ -24,6 +24,7 @@ module.exports = grammar({
         $.def_statement,
         $.let_statement,
         $.if_statement,
+        $.match_statement,
         $.foreach_statement,
         $.while_statement,
         $.until_statement,
@@ -83,6 +84,95 @@ module.exports = grammar({
       seq("elif", field("condition", $._expression), ":", repeat($._statement)),
 
     else_clause: ($) => seq("else", ":", repeat($._statement)),
+
+    // Match statement
+    match_statement: ($) =>
+      seq(
+        "match",
+        field("value", $._expression),
+        ":",
+        repeat1($.match_arm),
+        "end"
+      ),
+
+    match_arm: ($) =>
+      seq(
+        "|",
+        field("pattern", $.pattern),
+        optional(field("guard", $.guard)),
+        ":",
+        field("body", $._primary_expression)
+      ),
+
+    guard: ($) => seq("if", $._expression),
+
+    pattern: ($) =>
+      choice(
+        $.literal_pattern,
+        $.type_pattern,
+        $.array_pattern,
+        $.dict_pattern,
+        $.wildcard_pattern,
+        $.variable_pattern
+      ),
+
+    // Literal patterns: numbers, strings, booleans, none
+    literal_pattern: ($) =>
+      choice(
+        $.number,
+        $.string,
+        $.boolean,
+        $.none
+      ),
+
+    // Type patterns: :string, :number, :array, :dict, :bool, :none, :markdown
+    type_pattern: (_) =>
+      token(
+        seq(
+          ":",
+          choice("string", "number", "array", "dict", "bool", "none", "markdown")
+        )
+      ),
+
+    // Array patterns: [], [x], [x, y], [first, ...rest]
+    array_pattern: ($) =>
+      seq(
+        "[",
+        optional(
+          seq(
+            $.pattern_element,
+            repeat(seq(",", $.pattern_element))
+          )
+        ),
+        "]"
+      ),
+
+    pattern_element: ($) =>
+      choice(
+        $.rest_pattern,
+        $.variable_pattern
+      ),
+
+    rest_pattern: ($) => seq("..", field("variable", $.identifier)),
+
+    // Dict patterns: {}, {name, age}
+    dict_pattern: ($) =>
+      seq(
+        "{",
+        optional(
+          seq(
+            field("key", $.identifier),
+            repeat(seq(",", field("key", $.identifier)))
+          )
+        ),
+        "}"
+      ),
+
+    // Wildcard pattern: _
+    wildcard_pattern: (_) => "_",
+
+    // Variable pattern: x
+    variable_pattern: ($) => $.identifier,
 
     // Loop statements
     foreach_statement: ($) =>
