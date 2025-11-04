@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tree-sitter generate)",
+      "Bash(npx tree-sitter:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

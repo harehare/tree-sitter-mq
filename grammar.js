@@ -14,13 +14,18 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
-  conflicts: ($) => [[$._expression, $._primary_expression]],
+  conflicts: ($) => [
+    [$._expression, $._primary_expression],
+    [$.qualified_access]
+  ],
 
   rules: {
     source_file: ($) => repeat($._statement),
 
     _statement: ($) =>
       choice(
+        $.module_statement,
+        $.import_statement,
         $.def_statement,
         $.let_statement,
         $.if_statement,
@@ -38,6 +43,19 @@ module.exports = grammar({
     // Comments
     comment: (_) => token(seq("#", /.*/)),
 
+    // Module statement
+    module_statement: ($) =>
+      seq(
+        "module",
+        field("name", $.identifier),
+        ":",
+        repeat($._statement),
+        "end"
+      ),
+
+    // Import statement
+    import_statement: ($) => seq("import", field("path", $.string)),
+
     // Definition statement
     def_statement: ($) =>
       seq(
@@ -45,8 +63,12 @@ module.exports = grammar({
         field("name", $.identifier),
         optional(field("parameters", $.parameter_list)),
         ":",
-        repeat($._statement),
-        "end"
+        choice(
+          // Single expression form: def name(): expr;
+          seq(field("body", $._primary_expression), ";"),
+          // Block form: def name(): ... end
+          seq(repeat($._statement), "end")
+        )
       ),
 
     parameter_list: ($) =>
@@ -223,6 +245,7 @@ module.exports = grammar({
         $.pipe_expression,
         $.binary_expression,
         $.unary_expression,
+        $.qualified_access,
         $.selector_expression,
         $.call_expression,
         $.array,
@@ -247,6 +270,7 @@ module.exports = grammar({
       choice(
         $.binary_expression,
         $.unary_expression,
+        $.qualified_access,
         $.selector_expression,
         $.call_expression,
         $.array,
@@ -283,6 +307,30 @@ module.exports = grammar({
       choice(
         prec(12, seq("!", $._primary_expression)),
         prec(12, seq("-", $._primary_expression))
+      ),
+
+    // Qualified access expression (module::function or module::function())
+    qualified_access: ($) =>
+      choice(
+        // With arguments: higher precedence to consume argument_list
+        prec.dynamic(
+          15,
+          seq(
+            field("module", $.identifier),
+            "::",
+            field("function", $.identifier),
+            field("arguments", $.argument_list)
+          )
+        ),
+        // Without arguments: lower precedence
+        prec.dynamic(
+          14,
+          seq(
+            field("module", $.identifier),
+            "::",
+            field("function", $.identifier)
+          )
+        )
       ),
 
     // Call expression
