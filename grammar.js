@@ -362,12 +362,14 @@ module.exports = grammar({
             ".",
             choice(
               field("property", $.identifier),
-              seq("[", optional(field("index", $._primary_expression)), "]")
+              seq("[", optional(field("index", $._primary_expression)), "]"),
+              seq("[", field("start", $._primary_expression), ":", field("end", $._primary_expression), "]")
             ),
             repeat(
               choice(
                 seq(".", field("property", $.identifier)),
-                seq("[", optional(field("index", $._primary_expression)), "]")
+                seq("[", optional(field("index", $._primary_expression)), "]"),
+                seq("[", field("start", $._primary_expression), ":", field("end", $._primary_expression), "]")
               )
             )
           ),
@@ -377,7 +379,8 @@ module.exports = grammar({
             repeat1(
               choice(
                 seq(".", field("property", $.identifier)),
-                seq("[", optional(field("index", $._primary_expression)), "]")
+                seq("[", optional(field("index", $._primary_expression)), "]"),
+                seq("[", field("start", $._primary_expression), ":", field("end", $._primary_expression), "]")
               )
             )
           )
@@ -430,11 +433,13 @@ module.exports = grammar({
 
     // Interpolated string
     interpolated_string: ($) =>
-      seq('"', repeat(choice($.string_content, $.interpolation)), '"'),
+      seq('s"', repeat(choice($.string_content, $.interpolation, $.escaped_dollar)), '"'),
 
-    string_content: (_) => token.immediate(prec(1, /[^"\\$]+/)),
+    string_content: (_) => token.immediate(prec(1, /[^"$\\]+/)),
 
-    interpolation: ($) => seq("\\(", $._primary_expression, ")"),
+    escaped_dollar: (_) => token.immediate('$$'),
+
+    interpolation: ($) => seq('${', $._primary_expression, '}'),
 
     // Special identifiers
     self: (_) => "self",
