@@ -380,10 +380,6 @@
           "named": true
         },
         {
-          "type": "until_statement",
-          "named": true
-        },
-        {
           "type": "while_statement",
           "named": true
         }
@@ -642,10 +638,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "until_statement",
           "named": true
         },
         {
@@ -992,10 +984,6 @@
           "named": true
         },
         {
-          "type": "until_statement",
-          "named": true
-        },
-        {
           "type": "while_statement",
           "named": true
         }
@@ -1128,10 +1116,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "until_statement",
           "named": true
         },
         {
@@ -1360,10 +1344,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "until_statement",
           "named": true
         },
         {
@@ -1846,10 +1826,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "until_statement",
           "named": true
         },
         {
@@ -2453,10 +2429,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "until_statement",
           "named": true
         },
         {
@@ -3108,10 +3080,6 @@
           "named": true
         },
         {
-          "type": "until_statement",
-          "named": true
-        },
-        {
           "type": "while_statement",
           "named": true
         }
@@ -3192,228 +3160,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "until_statement",
-    "named": true,
-    "fields": {
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "array",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "function_expression",
-            "named": true
-          },
-          {
-            "type": "group_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "interpolated_string",
-            "named": true
-          },
-          {
-            "type": "nodes",
-            "named": true
-          },
-          {
-            "type": "none",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "pipe_expression",
-            "named": true
-          },
-          {
-            "type": "qualified_access",
-            "named": true
-          },
-          {
-            "type": "selector_expression",
-            "named": true
-          },
-          {
-            "type": "self",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "array",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "block_statement",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "def_statement",
-          "named": true
-        },
-        {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "foreach_statement",
-          "named": true
-        },
-        {
-          "type": "function_expression",
-          "named": true
-        },
-        {
-          "type": "group_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "import_statement",
-          "named": true
-        },
-        {
-          "type": "include_statement",
-          "named": true
-        },
-        {
-          "type": "interpolated_string",
-          "named": true
-        },
-        {
-          "type": "let_statement",
-          "named": true
-        },
-        {
-          "type": "match_statement",
-          "named": true
-        },
-        {
-          "type": "module_statement",
-          "named": true
-        },
-        {
-          "type": "nodes",
-          "named": true
-        },
-        {
-          "type": "none",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "pipe_expression",
-          "named": true
-        },
-        {
-          "type": "qualified_access",
-          "named": true
-        },
-        {
-          "type": "selector_expression",
-          "named": true
-        },
-        {
-          "type": "self",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "until_statement",
-          "named": true
-        },
-        {
-          "type": "while_statement",
           "named": true
         }
       ]
@@ -3646,10 +3392,6 @@
           "named": true
         },
         {
-          "type": "until_statement",
-          "named": true
-        },
-        {
           "type": "while_statement",
           "named": true
         }
@@ -3875,10 +3617,6 @@
   {
     "type": "type_pattern",
     "named": true
-  },
-  {
-    "type": "until",
-    "named": false
   },
   {
     "type": "while",

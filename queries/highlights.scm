@@ -7,7 +7,6 @@
   "else"
   "end"
   "while"
-  "until"
   "foreach"
   "include"
   "fn"

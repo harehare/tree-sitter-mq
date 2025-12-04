@@ -32,7 +32,6 @@ module.exports = grammar({
         $.match_statement,
         $.foreach_statement,
         $.while_statement,
-        $.until_statement,
         $.break_statement,
         $.continue_statement,
         $.include_statement,
@@ -213,15 +212,6 @@ module.exports = grammar({
     while_statement: ($) =>
       seq(
         "while",
-        field("condition", $._expression),
-        ":",
-        repeat($._statement),
-        "end"
-      ),
-
-    until_statement: ($) =>
-      seq(
-        "until",
         field("condition", $._expression),
         ":",
         repeat($._statement),
