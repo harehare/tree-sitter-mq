@@ -3,7 +3,6 @@ authors = ["Takahiro Sato <harehare1110@gmail.com>"]
 categories = ["parsing", "text-editors"]
 description = "mq grammar for tree-sitter"
 edition = "2024"
-exclude = ["tests/*", "examples/*", "docs/*", ".github/*", "node_modules"]
 homepage = "https://mqlang.org"
 keywords = ["incremental", "parsing", "mq"]
 license = "MIT"
