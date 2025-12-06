@@ -1,16 +1,25 @@
 [package]
-name = "tree-sitter-mq"
-version = "0.1.0"
-description = "mq grammar for tree-sitter"
 authors = ["harehare"]
-license = "MIT"
-readme = "README.md"
-keywords = ["incremental", "parsing", "mq"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/harehare/mq"
+description = "mq grammar for tree-sitter"
 edition = "2021"
+keywords = ["incremental", "parsing", "mq"]
+license = "MIT"
+name = "tree-sitter-mq"
+readme = "README.md"
+repository = "https://github.com/harehare/mq"
+version = "0.1.1"
 
 build = "bindings/rust/build.rs"
+
+include = [
+  "LICENSE",
+  "bindings/rust/*",
+  "./grammar.js",
+  "queries/*",
+  "src/*",
+  "tree-sitter.json",
+]
 
 [lib]
 path = "bindings/rust/lib.rs"
