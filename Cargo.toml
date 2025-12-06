@@ -1,13 +1,15 @@
 [package]
-authors = ["harehare"]
+authors = ["Takahiro Sato <harehare1110@gmail.com>"]
 categories = ["parsing", "text-editors"]
 description = "mq grammar for tree-sitter"
-edition = "2021"
+edition = "2024"
+exclude = ["tests/*", "examples/*", "docs/*", ".github/*", "node_modules"]
+homepage = "https://mqlang.org"
 keywords = ["incremental", "parsing", "mq"]
 license = "MIT"
 name = "tree-sitter-mq"
 readme = "README.md"
-repository = "https://github.com/harehare/mq"
+repository = "https://github.com/harehare/tree-sitter-mq"
 version = "0.1.1"
 
 build = "bindings/rust/build.rs"
