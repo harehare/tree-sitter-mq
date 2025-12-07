@@ -235,12 +235,12 @@ module.exports = grammar({
         $.binary_expr,
         $.unary_expr,
         $.qualified_access,
-        $.selector_expression,
-        $.call_expression,
+        $.selector_expr,
+        $.call_expr,
         $.array,
         $.dict,
-        $.group_expression,
-        $.function_expression,
+        $.group_expr,
+        $.function_expr,
         $.interpolated_string,
         $.identifier,
         $.self,
@@ -260,12 +260,12 @@ module.exports = grammar({
         $.binary_expr,
         $.unary_expr,
         $.qualified_access,
-        $.selector_expression,
-        $.call_expression,
+        $.selector_expr,
+        $.call_expr,
         $.array,
         $.dict,
-        $.group_expression,
-        $.function_expression,
+        $.group_expr,
+        $.function_expr,
         $.interpolated_string,
         $.identifier,
         $.self,
@@ -323,7 +323,7 @@ module.exports = grammar({
       ),
 
     // Call expression
-    call_expression: ($) =>
+    call_expr: ($) =>
       prec(
         13,
         seq(
@@ -342,7 +342,7 @@ module.exports = grammar({
       ),
 
     // Selector expression
-    selector_expression: ($) =>
+    selector_expr: ($) =>
       prec.left(
         15,
         choice(
@@ -377,7 +377,7 @@ module.exports = grammar({
       ),
 
     // Function expression
-    function_expression: ($) =>
+    function_expr: ($) =>
       seq(
         "fn",
         optional(field("parameters", $.parameter_list)),
@@ -387,7 +387,7 @@ module.exports = grammar({
       ),
 
     // Group expression
-    group_expression: ($) => seq("(", $._primary_expr, ")"),
+    group_expr: ($) => seq("(", $._primary_expr, ")"),
 
     // Array
     array: ($) =>

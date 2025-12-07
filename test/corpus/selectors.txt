@@ -7,7 +7,7 @@ Simple property selector
 ---
 
 (source_file
-  (selector_expression
+  (selector_expr
     property: (identifier)))
 
 ==================
@@ -19,8 +19,8 @@ Chained property selector
 ---
 
 (source_file
-  (selector_expression
-    base: (selector_expression
+  (selector_expr
+    base: (selector_expr
       property: (identifier))
     property: (identifier)))
 
@@ -33,7 +33,7 @@ Array iterator selector
 ---
 
 (source_file
-  (selector_expression))
+  (selector_expr))
 
 ==================
 Double array iterator selector
@@ -44,8 +44,8 @@ Double array iterator selector
 ---
 
 (source_file
-  (selector_expression
-    base: (selector_expression)))
+  (selector_expr
+    base: (selector_expr)))
 
 ==================
 Chained selector with base
@@ -56,8 +56,8 @@ x.h.level
 ---
 
 (source_file
-  (selector_expression
-    base: (selector_expression
+  (selector_expr
+    base: (selector_expr
       base: (identifier)
       property: (identifier))
     property: (identifier)))
@@ -71,6 +71,6 @@ x[0]
 ---
 
 (source_file
-  (selector_expression
+  (selector_expr
     base: (identifier)
     index: (number)))

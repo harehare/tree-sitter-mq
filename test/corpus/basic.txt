@@ -41,7 +41,7 @@ add(1, 2)
 ---
 
 (source_file
-  (call_expression
+  (call_expr
     function: (identifier)
     arguments: (argument_list
       (number)
@@ -59,13 +59,13 @@ foreach (x, array(1, 2, 3)):
 (source_file
   (foreach_expr
     variable: (identifier)
-    iterable: (call_expression
+    iterable: (call_expr
       function: (identifier)
       arguments: (argument_list
         (number)
         (number)
         (number)))
-    (call_expression
+    (call_expr
       function: (identifier)
       arguments: (argument_list
         (identifier)
@@ -81,7 +81,7 @@ if (x > 0): x
 
 (source_file
   (if_expr
-    condition: (group_expression
+    condition: (group_expr
       (binary_expr
         (identifier)
         (number)))
@@ -113,7 +113,7 @@ x | add(1)
 (source_file
   (pipe
     (identifier)
-    (call_expression
+    (call_expr
       function: (identifier)
       arguments: (argument_list (number)))))
 
