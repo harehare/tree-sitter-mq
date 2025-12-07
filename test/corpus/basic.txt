@@ -75,9 +75,7 @@ foreach (x, array(1, 2, 3)):
 If statement
 ==================
 
-if (x > 0):
-  x
-end
+if (x > 0): x
 
 ---
 
@@ -87,7 +85,7 @@ end
       (binary_expr
         (identifier)
         (number)))
-    (identifier)))
+    body: (identifier)))
 
 ==================
 Binary expressions

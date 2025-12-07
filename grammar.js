@@ -95,16 +95,15 @@ module.exports = grammar({
         "if",
         field("condition", $._expression),
         ":",
-        repeat($._expr),
+        field("body", $._primary_expression),
         repeat($.elif_clause),
-        optional($.else_clause),
-        "end"
+        optional($.else_clause)
       ),
 
     elif_clause: ($) =>
-      seq("elif", field("condition", $._expression), ":", repeat($._expr)),
+      seq("elif", field("condition", $._expression), ":", field("body", $._primary_expression)),
 
-    else_clause: ($) => seq("else", ":", repeat($._expr)),
+    else_clause: ($) => seq("else", ":", field("body", $._primary_expression)),
 
     // Match statement
     match_expr: ($) =>
