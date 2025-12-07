@@ -1,10 +1,10 @@
-# tree-sitter-mq
+<h1 align="center">tree-sitter-mq</h1>
 
-Tree-sitter grammar for the mq.
+Tree-sitter grammar for the [mq](https://github.com/harehare/mq).
 
 ## Overview
 
-This package provides a tree-sitter parser for mq, a jq-like command-line tool for Markdown processing.
+This package provides a tree-sitter parser for [mq](https://mqlang.org), a jq-like command-line tool for Markdown processing.
 
 ## Usage
 
@@ -14,7 +14,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-tree-sitter-mq = "0.1"
+tree-sitter-mq = "0.1.1"
 tree-sitter = "0.24"
 ```
 
@@ -62,4 +62,5 @@ cargo test
 ```
 
 ## License
+
 MIT

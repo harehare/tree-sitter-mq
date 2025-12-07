@@ -6,7 +6,6 @@ edition = "2024"
 homepage = "https://mqlang.org"
 keywords = ["incremental", "parsing", "mq"]
 license = "MIT"
-license-file = "LICENSE"
 name = "tree-sitter-mq"
 readme = "README.md"
 repository = "https://github.com/harehare/tree-sitter-mq"
@@ -15,7 +14,6 @@ version = "0.1.1"
 build = "bindings/rust/build.rs"
 
 include = [
-  "./LICENSE",
   "bindings/rust/*",
   "./grammar.js",
   "queries/*",
