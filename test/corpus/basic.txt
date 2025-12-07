@@ -7,7 +7,7 @@ let x = 1
 ---
 
 (source_file
-  (let_statement
+  (let_expr
     name: (identifier)
     value: (number)))
 
@@ -23,12 +23,12 @@ end
 ---
 
 (source_file
-  (def_statement
+  (def_expr
     name: (identifier)
     parameters: (parameter_list (identifier))
-    (let_statement
+    (let_expr
       name: (identifier)
-      value: (pipe_expression
+      value: (pipe
         (string)
         (identifier)))))
 
@@ -57,7 +57,7 @@ foreach (x, array(1, 2, 3)):
 ---
 
 (source_file
-  (foreach_statement
+  (foreach_expr
     variable: (identifier)
     iterable: (call_expression
       function: (identifier)
@@ -82,9 +82,9 @@ end
 ---
 
 (source_file
-  (if_statement
+  (if_expr
     condition: (group_expression
-      (binary_expression
+      (binary_expr
         (identifier)
         (number)))
     (identifier)))
@@ -98,9 +98,9 @@ Binary expressions
 ---
 
 (source_file
-  (binary_expression
+  (binary_expr
     (number)
-    (binary_expression
+    (binary_expr
       (number)
       (number))))
 
@@ -113,7 +113,7 @@ x | add(1)
 ---
 
 (source_file
-  (pipe_expression
+  (pipe
     (identifier)
     (call_expression
       function: (identifier)
@@ -161,6 +161,6 @@ let x = 1
 
 (source_file
   (comment)
-  (let_statement
+  (let_expr
     name: (identifier)
     value: (number)))

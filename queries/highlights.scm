@@ -14,8 +14,8 @@
 ] @keyword
 
 ; Statement keywords
-(break_statement) @keyword
-(continue_statement) @keyword
+(break_expr) @keyword
+(continue_expr) @keyword
 
 ; Special identifiers
 (self) @keyword.special
@@ -68,7 +68,7 @@
 ] @punctuation.bracket
 
 ; Function definitions
-(def_statement
+(def_expr
   name: (identifier) @function)
 
 ; Function calls
@@ -80,10 +80,10 @@
   (identifier) @parameter)
 
 ; Variables
-(let_statement
+(let_expr
   name: (identifier) @variable)
 
-(foreach_statement
+(foreach_expr
   variable: (identifier) @variable)
 
 ; Identifiers
