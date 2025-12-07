@@ -62,5 +62,4 @@ cargo test
 ```
 
 ## License
-
 MIT

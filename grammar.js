@@ -20,22 +20,22 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: ($) => repeat($._statement),
+    source_file: ($) => repeat($._expr),
 
-    _statement: ($) =>
+    _expr: ($) =>
       choice(
-        $.module_statement,
-        $.import_statement,
-        $.def_statement,
-        $.let_statement,
-        $.if_statement,
-        $.match_statement,
-        $.foreach_statement,
-        $.while_statement,
-        $.break_statement,
-        $.continue_statement,
-        $.include_statement,
-        $.block_statement,
+        $.module_expr,
+        $.import_expr,
+        $.def_expr,
+        $.let_expr,
+        $.if_expr,
+        $.match_expr,
+        $.foreach_expr,
+        $.while_expr,
+        $.break_expr,
+        $.continue_expr,
+        $.include_expr,
+        $.block_expr,
         $._expression
       ),
 
@@ -43,20 +43,20 @@ module.exports = grammar({
     comment: (_) => token(seq("#", /.*/)),
 
     // Module statement
-    module_statement: ($) =>
+    module_expr: ($) =>
       seq(
         "module",
         field("name", $.identifier),
         ":",
-        repeat($._statement),
+        repeat($._expr),
         "end"
       ),
 
     // Import statement
-    import_statement: ($) => seq("import", field("path", $.string)),
+    import_expr: ($) => seq("import", field("path", $.string)),
 
     // Definition statement
-    def_statement: ($) =>
+    def_expr: ($) =>
       seq(
         "def",
         field("name", $.identifier),
@@ -66,7 +66,7 @@ module.exports = grammar({
           // Single expression form: def name(): expr;
           seq(field("body", $._primary_expression), ";"),
           // Block form: def name(): ... end
-          seq(repeat($._statement), "end")
+          seq(repeat($._expr), "end")
         )
       ),
 
@@ -78,7 +78,7 @@ module.exports = grammar({
       ),
 
     // Let statement
-    let_statement: ($) =>
+    let_expr: ($) =>
       seq(
         "let",
         field("name", $.identifier),
@@ -87,27 +87,27 @@ module.exports = grammar({
       ),
 
     // Include statement
-    include_statement: ($) => seq("include", field("path", $.string)),
+    include_expr: ($) => seq("include", field("path", $.string)),
 
     // If statement
-    if_statement: ($) =>
+    if_expr: ($) =>
       seq(
         "if",
         field("condition", $._expression),
         ":",
-        repeat($._statement),
+        repeat($._expr),
         repeat($.elif_clause),
         optional($.else_clause),
         "end"
       ),
 
     elif_clause: ($) =>
-      seq("elif", field("condition", $._expression), ":", repeat($._statement)),
+      seq("elif", field("condition", $._expression), ":", repeat($._expr)),
 
-    else_clause: ($) => seq("else", ":", repeat($._statement)),
+    else_clause: ($) => seq("else", ":", repeat($._expr)),
 
     // Match statement
-    match_statement: ($) =>
+    match_expr: ($) =>
       seq(
         "match",
         field("value", $._expression),
@@ -196,7 +196,7 @@ module.exports = grammar({
     variable_pattern: ($) => $.identifier,
 
     // Loop statements
-    foreach_statement: ($) =>
+    foreach_expr: ($) =>
       seq(
         "foreach",
         "(",
@@ -205,36 +205,36 @@ module.exports = grammar({
         field("iterable", $._expression),
         ")",
         ":",
-        repeat($._statement),
+        repeat($._expr),
         choice("end", ";")
       ),
 
-    while_statement: ($) =>
+    while_expr: ($) =>
       seq(
         "while",
         field("condition", $._expression),
         ":",
-        repeat($._statement),
+        repeat($._expr),
         "end"
       ),
 
-    block_statement: ($) =>
+    block_expr: ($) =>
       seq(
         "do",
-        repeat($._statement),
+        repeat($._expr),
         "end"
       ),
 
     // Control flow
-    break_statement: (_) => "break",
-    continue_statement: (_) => "continue",
+    break_expr: (_) => "break",
+    continue_expr: (_) => "continue",
 
     // Expressions
     _expression: ($) =>
       choice(
-        $.pipe_expression,
-        $.binary_expression,
-        $.unary_expression,
+        $.pipe,
+        $.binary_expr,
+        $.unary_expr,
         $.qualified_access,
         $.selector_expression,
         $.call_expression,
@@ -249,8 +249,8 @@ module.exports = grammar({
         $._literal
       ),
 
-    // Pipe expression (lowest precedence to allow multi-line pipes)
-    pipe_expression: ($) =>
+    // Pipe (lowest precedence to allow multi-line pipes)
+    pipe: ($) =>
       prec.left(
         1,
         seq($._primary_expression, repeat1(seq("|", $._primary_expression)))
@@ -258,8 +258,8 @@ module.exports = grammar({
 
     _primary_expression: ($) =>
       choice(
-        $.binary_expression,
-        $.unary_expression,
+        $.binary_expr,
+        $.unary_expr,
         $.qualified_access,
         $.selector_expression,
         $.call_expression,
@@ -274,7 +274,7 @@ module.exports = grammar({
       ),
 
     // Binary expressions
-    binary_expression: ($) =>
+    binary_expr: ($) =>
       choice(
         prec.left(10, seq($._primary_expression, "+", $._primary_expression)),
         prec.left(10, seq($._primary_expression, "-", $._primary_expression)),
@@ -293,7 +293,7 @@ module.exports = grammar({
       ),
 
     // Unary expressions
-    unary_expression: ($) =>
+    unary_expr: ($) =>
       choice(
         prec(12, seq("!", $._primary_expression)),
         prec(12, seq("-", $._primary_expression))
