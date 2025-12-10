@@ -14,10 +14,7 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
-  conflicts: ($) => [
-    [$._expression, $._primary_expr],
-    [$.qualified_access]
-  ],
+  conflicts: ($) => [[$._expression, $._primary_expr], [$.qualified_access]],
 
   rules: {
     source_file: ($) => repeat($._expr),
@@ -28,6 +25,7 @@ module.exports = grammar({
         $.import_expr,
         $.def_expr,
         $.let_expr,
+        $.var_expr,
         $.if_expr,
         $.match_expr,
         $.foreach_expr,
@@ -44,13 +42,7 @@ module.exports = grammar({
 
     // Module statement
     module_expr: ($) =>
-      seq(
-        "module",
-        field("name", $.identifier),
-        ":",
-        repeat($._expr),
-        "end"
-      ),
+      seq("module", field("name", $.identifier), ":", repeat($._expr), "end"),
 
     // Import statement
     import_expr: ($) => seq("import", field("path", $.string)),
@@ -86,6 +78,15 @@ module.exports = grammar({
         field("value", $._expression)
       ),
 
+    // Var statement
+    var_expr: ($) =>
+      seq(
+        "var",
+        field("name", $.identifier),
+        "=",
+        field("value", $._expression)
+      ),
+
     // Include statement
     include_expr: ($) => seq("include", field("path", $.string)),
 
@@ -101,7 +102,12 @@ module.exports = grammar({
       ),
 
     elif_clause: ($) =>
-      seq("elif", field("condition", $._expression), ":", field("body", $._primary_expr)),
+      seq(
+        "elif",
+        field("condition", $._expression),
+        ":",
+        field("body", $._primary_expr)
+      ),
 
     else_clause: ($) => seq("else", ":", field("body", $._primary_expr)),
 
@@ -137,20 +143,22 @@ module.exports = grammar({
       ),
 
     // Literal patterns: numbers, strings, booleans, none
-    literal_pattern: ($) =>
-      choice(
-        $.number,
-        $.string,
-        $.boolean,
-        $.none
-      ),
+    literal_pattern: ($) => choice($.number, $.string, $.boolean, $.none),
 
     // Type patterns: :string, :number, :array, :dict, :bool, :none, :markdown
     type_pattern: (_) =>
       token(
         seq(
           ":",
-          choice("string", "number", "array", "dict", "bool", "none", "markdown")
+          choice(
+            "string",
+            "number",
+            "array",
+            "dict",
+            "bool",
+            "none",
+            "markdown"
+          )
         )
       ),
 
@@ -158,20 +166,11 @@ module.exports = grammar({
     array_pattern: ($) =>
       seq(
         "[",
-        optional(
-          seq(
-            $.pattern_element,
-            repeat(seq(",", $.pattern_element))
-          )
-        ),
+        optional(seq($.pattern_element, repeat(seq(",", $.pattern_element)))),
         "]"
       ),
 
-    pattern_element: ($) =>
-      choice(
-        $.rest_pattern,
-        $.variable_pattern
-      ),
+    pattern_element: ($) => choice($.rest_pattern, $.variable_pattern),
 
     rest_pattern: ($) => seq("..", field("variable", $.identifier)),
 
@@ -217,12 +216,7 @@ module.exports = grammar({
         "end"
       ),
 
-    block_expr: ($) =>
-      seq(
-        "do",
-        repeat($._expr),
-        "end"
-      ),
+    block_expr: ($) => seq("do", repeat($._expr), "end"),
 
     // Control flow
     break_expr: (_) => "break",
@@ -250,10 +244,7 @@ module.exports = grammar({
 
     // Pipe (lowest precedence to allow multi-line pipes)
     pipe: ($) =>
-      prec.left(
-        1,
-        seq($._primary_expr, repeat1(seq("|", $._primary_expr)))
-      ),
+      prec.left(1, seq($._primary_expr, repeat1(seq("|", $._primary_expr)))),
 
     _primary_expr: ($) =>
       choice(
@@ -335,9 +326,7 @@ module.exports = grammar({
     argument_list: ($) =>
       seq(
         "(",
-        optional(
-          seq($._primary_expr, repeat(seq(",", $._primary_expr)))
-        ),
+        optional(seq($._primary_expr, repeat(seq(",", $._primary_expr)))),
         ")"
       ),
 
@@ -352,13 +341,25 @@ module.exports = grammar({
             choice(
               field("property", $.identifier),
               seq("[", optional(field("index", $._primary_expr)), "]"),
-              seq("[", field("start", $._primary_expr), ":", field("end", $._primary_expr), "]")
+              seq(
+                "[",
+                field("start", $._primary_expr),
+                ":",
+                field("end", $._primary_expr),
+                "]"
+              )
             ),
             repeat(
               choice(
                 seq(".", field("property", $.identifier)),
                 seq("[", optional(field("index", $._primary_expr)), "]"),
-                seq("[", field("start", $._primary_expr), ":", field("end", $._primary_expr), "]")
+                seq(
+                  "[",
+                  field("start", $._primary_expr),
+                  ":",
+                  field("end", $._primary_expr),
+                  "]"
+                )
               )
             )
           ),
@@ -369,7 +370,13 @@ module.exports = grammar({
               choice(
                 seq(".", field("property", $.identifier)),
                 seq("[", optional(field("index", $._primary_expr)), "]"),
-                seq("[", field("start", $._primary_expr), ":", field("end", $._primary_expr), "]")
+                seq(
+                  "[",
+                  field("start", $._primary_expr),
+                  ":",
+                  field("end", $._primary_expr),
+                  "]"
+                )
               )
             )
           )
@@ -394,11 +401,7 @@ module.exports = grammar({
       seq(
         "[",
         optional(
-          seq(
-            $._primary_expr,
-            repeat(seq(",", $._primary_expr)),
-            optional(",")
-          )
+          seq($._primary_expr, repeat(seq(",", $._primary_expr)), optional(","))
         ),
         "]"
       ),
@@ -422,13 +425,17 @@ module.exports = grammar({
 
     // Interpolated string
     interpolated_string: ($) =>
-      seq('s"', repeat(choice($.string_content, $.interpolation, $.escaped_dollar)), '"'),
+      seq(
+        's"',
+        repeat(choice($.string_content, $.interpolation, $.escaped_dollar)),
+        '"'
+      ),
 
     string_content: (_) => token.immediate(prec(1, /[^"$\\]+/)),
 
-    escaped_dollar: (_) => token.immediate('$$'),
+    escaped_dollar: (_) => token.immediate("$$"),
 
-    interpolation: ($) => seq('${', $._primary_expr, '}'),
+    interpolation: ($) => seq("${", $._primary_expr, "}"),
 
     // Special identifiers
     self: (_) => "self",

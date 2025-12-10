@@ -12,6 +12,19 @@ let x = 1
     value: (number)))
 
 ==================
+Simple var statement
+==================
+
+var x = 1
+
+---
+
+(source_file
+  (var_expr
+    name: (identifier)
+    value: (number)))
+
+==================
 Function definition
 ==================
 

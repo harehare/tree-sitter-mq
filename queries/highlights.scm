@@ -11,6 +11,7 @@
   "include"
   "fn"
   "do"
+  "var"
 ] @keyword
 
 ; Statement keywords
