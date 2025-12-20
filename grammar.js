@@ -34,6 +34,7 @@ module.exports = grammar({
         $.continue_expr,
         $.include_expr,
         $.block_expr,
+        $.macro_expr,
         $._expression
       ),
 
@@ -217,6 +218,20 @@ module.exports = grammar({
       ),
 
     block_expr: ($) => seq("do", repeat($._expr), "end"),
+
+    macro_expr: ($) =>
+      seq(
+        "macro",
+        field("name", $.identifier),
+        optional(field("parameters", $.parameter_list)),
+        ":",
+        choice(
+          // Single expression form: macro name(): expr;
+          seq(field("body", $._primary_expr), ";"),
+          // Block form: macro name(): ... end
+          seq(repeat($._expr), "end")
+        )
+      ),
 
     // Control flow
     break_expr: (_) => "break",

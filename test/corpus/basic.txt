@@ -175,3 +175,35 @@ let x = 1
   (let_expr
     name: (identifier)
     value: (number)))
+
+
+==================
+Macro definition
+==================
+
+macro greet(name):
+  let message = "Hello"
+  | quote(message + unquote(name))
+end
+
+---
+
+(source_file
+  (macro_expr
+    name: (identifier)
+    parameters: (parameter_list
+      (identifier))
+    (let_expr
+      name: (identifier)
+      value: (pipe
+        (string)
+        (call_expr
+          function: (identifier)
+          arguments: (argument_list
+            (binary_expr
+              (identifier)
+              (call_expr
+                function: (identifier)
+                arguments: (argument_list
+                  (identifier))))))))))
+
