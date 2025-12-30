@@ -51,6 +51,5 @@ jobs:
 
       - name: Check for parser generation issues
         run: |
-          tree-sitter generate
+          npm run generate
           git diff --exit-code
-
