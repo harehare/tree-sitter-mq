@@ -66,8 +66,14 @@ module.exports = grammar({
     parameter_list: ($) =>
       seq(
         "(",
-        optional(seq($.identifier, repeat(seq(",", $.identifier)))),
+        optional(seq($.parameter, repeat(seq(",", $.parameter)))),
         ")"
+      ),
+
+    parameter: ($) =>
+      seq(
+        field("name", $.identifier),
+        optional(seq("=", field("default", $._primary_expr)))
       ),
 
     // Let statement

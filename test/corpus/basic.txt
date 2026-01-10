@@ -38,7 +38,9 @@ end
 (source_file
   (def_expr
     name: (identifier)
-    parameters: (parameter_list (identifier))
+    parameters: (parameter_list
+      (parameter
+        name: (identifier)))
     (let_expr
       name: (identifier)
       value: (pipe
@@ -192,7 +194,8 @@ end
   (macro_expr
     name: (identifier)
     parameters: (parameter_list
-      (identifier))
+      (parameter
+        name: (identifier)))
     (let_expr
       name: (identifier)
       value: (pipe

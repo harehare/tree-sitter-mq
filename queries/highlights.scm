@@ -78,8 +78,8 @@
   function: (identifier) @function.call)
 
 ; Parameters
-(parameter_list
-  (identifier) @parameter)
+(parameter
+  name: (identifier) @parameter)
 
 ; Variables
 (let_expr
