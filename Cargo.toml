@@ -9,7 +9,7 @@ license = "MIT"
 name = "tree-sitter-mq"
 readme = "README.md"
 repository = "https://github.com/harehare/tree-sitter-mq"
-version = "0.1.3"
+version = "0.1.4"
 
 build = "bindings/rust/build.rs"
 
