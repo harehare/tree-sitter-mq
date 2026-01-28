@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-mq",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "mq grammar for tree-sitter",
   "main": "bindings/node",
   "keywords": [
