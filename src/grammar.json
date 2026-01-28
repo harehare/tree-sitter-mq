@@ -1000,6 +1000,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "assignment_expr"
+        },
+        {
+          "type": "SYMBOL",
           "name": "binary_expr"
         },
         {
@@ -1088,6 +1092,10 @@
     "_primary_expr": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "assignment_expr"
+        },
         {
           "type": "SYMBOL",
           "name": "binary_expr"
@@ -1431,6 +1439,179 @@
               {
                 "type": "STRING",
                 "value": ".."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "assignment_expr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "|="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "+="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "-="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "*="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "/="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "%="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "//="
               },
               {
                 "type": "SYMBOL",

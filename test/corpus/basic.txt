@@ -210,3 +210,117 @@ end
                 arguments: (argument_list
                   (identifier))))))))))
 
+==================
+Simple assignment
+==================
+
+.x = 1
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))
+
+==================
+Update operator
+==================
+
+.x |= add(1)
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (call_expr
+      function: (identifier)
+      arguments: (argument_list
+        (number)))))
+
+==================
+Addition assignment
+==================
+
+.x += 1
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))
+
+==================
+Subtraction assignment
+==================
+
+.x -= 1
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))
+
+==================
+Multiplication assignment
+==================
+
+.x *= 2
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))
+
+==================
+Division assignment
+==================
+
+.x /= 2
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))
+
+==================
+Modulo assignment
+==================
+
+.x %= 3
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))
+
+==================
+Floor division assignment
+==================
+
+.x //= 2
+
+---
+
+(source_file
+  (assignment_expr
+    (selector_expr
+      property: (identifier))
+    (number)))

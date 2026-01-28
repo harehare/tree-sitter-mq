@@ -247,6 +247,7 @@ module.exports = grammar({
     _expression: ($) =>
       choice(
         $.pipe,
+        $.assignment_expr,
         $.binary_expr,
         $.unary_expr,
         $.qualified_access,
@@ -269,6 +270,7 @@ module.exports = grammar({
 
     _primary_expr: ($) =>
       choice(
+        $.assignment_expr,
         $.binary_expr,
         $.unary_expr,
         $.qualified_access,
@@ -301,6 +303,19 @@ module.exports = grammar({
         prec.left(3, seq($._primary_expr, "&&", $._primary_expr)),
         prec.left(2, seq($._primary_expr, "||", $._primary_expr)),
         prec.left(7, seq($._primary_expr, "..", $._primary_expr))
+      ),
+
+    // Assignment expressions
+    assignment_expr: ($) =>
+      choice(
+        prec.right(0, seq($._primary_expr, "=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "|=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "+=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "-=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "*=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "/=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "%=", $._primary_expr)),
+        prec.right(0, seq($._primary_expr, "//=", $._primary_expr))
       ),
 
     // Unary expressions
