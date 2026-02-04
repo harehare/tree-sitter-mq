@@ -30,6 +30,7 @@ module.exports = grammar({
         $.match_expr,
         $.foreach_expr,
         $.while_expr,
+        $.loop_expr,
         $.break_expr,
         $.continue_expr,
         $.include_expr,
@@ -66,7 +67,12 @@ module.exports = grammar({
     parameter_list: ($) =>
       seq(
         "(",
-        optional(seq($.parameter, repeat(seq(",", $.parameter)))),
+        optional(
+          seq(
+            choice($.parameter, $.variadic_parameter),
+            repeat(seq(",", choice($.parameter, $.variadic_parameter)))
+          )
+        ),
         ")"
       ),
 
@@ -75,6 +81,8 @@ module.exports = grammar({
         field("name", $.identifier),
         optional(seq("=", field("default", $._primary_expr)))
       ),
+
+    variadic_parameter: ($) => seq("*", field("name", $.identifier)),
 
     // Let statement
     let_expr: ($) =>
@@ -222,6 +230,8 @@ module.exports = grammar({
         repeat($._expr),
         "end"
       ),
+
+    loop_expr: ($) => seq("loop", ":", repeat($._expr), "end"),
 
     block_expr: ($) => seq("do", repeat($._expr), "end"),
 
