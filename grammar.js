@@ -271,7 +271,7 @@ module.exports = grammar({
         $.identifier,
         $.self,
         $.nodes,
-        $._literal
+        $._litera
       ),
 
     // Pipe (lowest precedence to allow multi-line pipes)
@@ -301,11 +301,14 @@ module.exports = grammar({
       choice(
         prec.left(10, seq($._primary_expr, "+", $._primary_expr)),
         prec.left(10, seq($._primary_expr, "-", $._primary_expr)),
+        prec.left(10, seq($._primary_expr, ">>", $._primary_expr)),
+        prec.left(10, seq($._primary_expr, "<<", $._primary_expr)),
         prec.left(11, seq($._primary_expr, "*", $._primary_expr)),
         prec.left(11, seq($._primary_expr, "/", $._primary_expr)),
         prec.left(11, seq($._primary_expr, "%", $._primary_expr)),
         prec.left(5, seq($._primary_expr, "==", $._primary_expr)),
         prec.left(5, seq($._primary_expr, "!=", $._primary_expr)),
+        prec.left(5, seq($._primary_expr, "=~", $._primary_expr)),
         prec.left(6, seq($._primary_expr, "<", $._primary_expr)),
         prec.left(6, seq($._primary_expr, "<=", $._primary_expr)),
         prec.left(6, seq($._primary_expr, ">", $._primary_expr)),

@@ -1260,6 +1260,48 @@
         },
         {
           "type": "PREC_LEFT",
+          "value": 10,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": ">>"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 10,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "<<"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
           "value": 11,
           "content": {
             "type": "SEQ",
@@ -1355,6 +1397,27 @@
               {
                 "type": "STRING",
                 "value": "!="
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 5,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "STRING",
+                "value": "=~"
               },
               {
                 "type": "SYMBOL",

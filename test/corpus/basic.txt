@@ -324,3 +324,30 @@ Floor division assignment
     (selector_expr
       property: (identifier))
     (number)))
+
+==================
+Shift left
+==================
+
+x << 2
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (number)))
+
+==================
+Shift Right
+==================
+
+x >> 2
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (number)))
+
