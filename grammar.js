@@ -271,7 +271,7 @@ module.exports = grammar({
         $.identifier,
         $.self,
         $.nodes,
-        $._litera
+        $._literal
       ),
 
     // Pipe (lowest precedence to allow multi-line pipes)
