@@ -306,6 +306,7 @@ module.exports = grammar({
         prec.left(11, seq($._primary_expr, "*", $._primary_expr)),
         prec.left(11, seq($._primary_expr, "/", $._primary_expr)),
         prec.left(11, seq($._primary_expr, "%", $._primary_expr)),
+        prec.left(11, seq($._primary_expr, "@", $._primary_expr)),
         prec.left(5, seq($._primary_expr, "==", $._primary_expr)),
         prec.left(5, seq($._primary_expr, "!=", $._primary_expr)),
         prec.left(5, seq($._primary_expr, "=~", $._primary_expr)),

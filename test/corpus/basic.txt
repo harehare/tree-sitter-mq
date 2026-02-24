@@ -351,3 +351,16 @@ x >> 2
     (identifier)
     (number)))
 
+==================
+Convert
+==================
+
+x @ :uri
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (symbol)))
+
