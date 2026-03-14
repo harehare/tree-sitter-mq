@@ -3,3 +3,4 @@ target/
 *.log
 Cargo.lock
 build
+.DS_Store
