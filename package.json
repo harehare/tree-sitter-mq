@@ -26,6 +26,7 @@
       "optional": true
     }
   },
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip",
