@@ -364,3 +364,51 @@ x @ :uri
     (identifier)
     (symbol)))
 
+
+==================
+Or pattern - literals
+==================
+
+match x:
+| 1 || 2: "one or two"
+| _: "other"
+end
+
+---
+
+(source_file
+  (match_expr
+    value: (identifier)
+    (match_arm
+      pattern: (pattern
+        (or_pattern
+          (literal_pattern (number))
+          (literal_pattern (number))))
+      body: (string))
+    (match_arm
+      pattern: (pattern (wildcard_pattern))
+      body: (string))))
+
+==================
+Or pattern - types
+==================
+
+match x:
+| :string || :number: "string or number"
+| _: "other"
+end
+
+---
+
+(source_file
+  (match_expr
+    value: (identifier)
+    (match_arm
+      pattern: (pattern
+        (or_pattern
+          (type_pattern)
+          (type_pattern)))
+      body: (string))
+    (match_arm
+      pattern: (pattern (wildcard_pattern))
+      body: (string))))

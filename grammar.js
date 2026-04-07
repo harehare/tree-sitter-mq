@@ -147,7 +147,12 @@ module.exports = grammar({
 
     guard: ($) => seq("if", $._expression),
 
-    pattern: ($) =>
+    pattern: ($) => choice($.or_pattern, $._base_pattern),
+
+    or_pattern: ($) =>
+      seq($._base_pattern, repeat1(seq("||", $._base_pattern))),
+
+    _base_pattern: ($) =>
       choice(
         $.literal_pattern,
         $.type_pattern,
