@@ -266,6 +266,7 @@ module.exports = grammar({
         $.binary_expr,
         $.unary_expr,
         $.qualified_access,
+        $.selector_call_expr,
         $.selector_expr,
         $.call_expr,
         $.array,
@@ -289,6 +290,7 @@ module.exports = grammar({
         $.binary_expr,
         $.unary_expr,
         $.qualified_access,
+        $.selector_call_expr,
         $.selector_expr,
         $.call_expr,
         $.array,
@@ -438,14 +440,24 @@ module.exports = grammar({
         )
       ),
 
+    // Selector call expression: .list(1), .table(1,2), .h(1..2), .code("rust")
+    selector_call_expr: ($) =>
+      prec(
+        16,
+        seq(
+          field("selector", $.selector_expr),
+          field("arguments", $.argument_list)
+        )
+      ),
+
     // Function expression
     function_expr: ($) =>
       seq(
-        "fn",
+        choice("fn", "->"),
         optional(field("parameters", $.parameter_list)),
         ":",
         field("body", $._primary_expr),
-        ";"
+        choice(";", "end")
       ),
 
     // Group expression

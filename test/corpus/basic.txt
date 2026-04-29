@@ -48,6 +48,36 @@ end
         (identifier)))))
 
 ==================
+Lambda function
+==================
+
+fn(x): x;
+
+---
+
+(source_file
+  (function_expr
+    parameters: (parameter_list
+      (parameter
+        name: (identifier)))
+    body: (identifier)))
+
+==================
+Arrow function
+==================
+
+->(x): x;
+
+---
+
+(source_file
+  (function_expr
+    parameters: (parameter_list
+      (parameter
+        name: (identifier)))
+    body: (identifier)))
+
+==================
 Function call
 ==================
 
