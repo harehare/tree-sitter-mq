@@ -74,3 +74,66 @@ x[0]
   (selector_expr
     base: (identifier)
     index: (number)))
+
+==================
+Selector call with one arg
+==================
+
+.list(1)
+
+---
+
+(source_file
+  (selector_call_expr
+    selector: (selector_expr
+      property: (identifier))
+    arguments: (argument_list
+      (number))))
+
+==================
+Selector call with multiple args
+==================
+
+.table(1,2)
+
+---
+
+(source_file
+  (selector_call_expr
+    selector: (selector_expr
+      property: (identifier))
+    arguments: (argument_list
+      (number)
+      (number))))
+
+==================
+Selector call with range arg
+==================
+
+.h(1..2)
+
+---
+
+(source_file
+  (selector_call_expr
+    selector: (selector_expr
+      property: (identifier))
+    arguments: (argument_list
+      (binary_expr
+        (number)
+        (number)))))
+
+==================
+Selector call with string arg
+==================
+
+.code("rust")
+
+---
+
+(source_file
+  (selector_call_expr
+    selector: (selector_expr
+      property: (identifier))
+    arguments: (argument_list
+      (string))))
