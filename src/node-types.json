@@ -552,88 +552,6 @@
     "type": "def_expr",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "array",
-            "named": true
-          },
-          {
-            "type": "assignment_expr",
-            "named": true
-          },
-          {
-            "type": "binary_expr",
-            "named": true
-          },
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "call_expr",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "function_expr",
-            "named": true
-          },
-          {
-            "type": "group_expr",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "interpolated_string",
-            "named": true
-          },
-          {
-            "type": "none",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "qualified_access",
-            "named": true
-          },
-          {
-            "type": "selector_call_expr",
-            "named": true
-          },
-          {
-            "type": "selector_expr",
-            "named": true
-          },
-          {
-            "type": "self",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "unary_expr",
-            "named": true
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1466,7 +1384,7 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -1482,7 +1400,15 @@
             "named": true
           },
           {
+            "type": "block_expr",
+            "named": true
+          },
+          {
             "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "break_expr",
             "named": true
           },
           {
@@ -1490,7 +1416,19 @@
             "named": true
           },
           {
+            "type": "continue_expr",
+            "named": true
+          },
+          {
+            "type": "def_expr",
+            "named": true
+          },
+          {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "foreach_expr",
             "named": true
           },
           {
@@ -1506,7 +1444,43 @@
             "named": true
           },
           {
+            "type": "if_expr",
+            "named": true
+          },
+          {
+            "type": "import_expr",
+            "named": true
+          },
+          {
+            "type": "include_expr",
+            "named": true
+          },
+          {
             "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "let_expr",
+            "named": true
+          },
+          {
+            "type": "loop_expr",
+            "named": true
+          },
+          {
+            "type": "macro_expr",
+            "named": true
+          },
+          {
+            "type": "match_expr",
+            "named": true
+          },
+          {
+            "type": "module_expr",
+            "named": true
+          },
+          {
+            "type": "nodes",
             "named": true
           },
           {
@@ -1515,6 +1489,10 @@
           },
           {
             "type": "number",
+            "named": true
+          },
+          {
+            "type": "pipe",
             "named": true
           },
           {
@@ -1543,6 +1521,14 @@
           },
           {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "var_expr",
+            "named": true
+          },
+          {
+            "type": "while_expr",
             "named": true
           }
         ]

@@ -56,12 +56,8 @@ module.exports = grammar({
         field("name", $.identifier),
         optional(field("parameters", $.parameter_list)),
         ":",
-        choice(
-          // Single expression form: def name(): expr;
-          seq(field("body", $._primary_expr), ";"),
-          // Block form: def name(): ... end
-          seq(repeat($._expr), "end")
-        )
+        repeat($._expr),
+        choice(";", "end")
       ),
 
     parameter_list: ($) =>
@@ -456,7 +452,7 @@ module.exports = grammar({
         choice("fn", "->"),
         optional(field("parameters", $.parameter_list)),
         ":",
-        field("body", $._primary_expr),
+        repeat1(field("body", $._expr)),
         choice(";", "end")
       ),
 
