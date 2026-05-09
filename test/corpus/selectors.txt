@@ -137,3 +137,55 @@ Selector call with string arg
       property: (identifier))
     arguments: (argument_list
       (string))))
+
+==================
+Quoted string property selector
+==================
+
+."hello world"
+
+---
+
+(source_file
+  (selector_expr
+    property: (string)))
+
+==================
+Quoted string property selector with Japanese
+==================
+
+."任意の文字列"
+
+---
+
+(source_file
+  (selector_expr
+    property: (string)))
+
+==================
+Chained quoted string property selector
+==================
+
+."foo"."bar"
+
+---
+
+(source_file
+  (selector_expr
+    base: (selector_expr
+      property: (string))
+    property: (string)))
+
+==================
+Mixed identifier and quoted string selector
+==================
+
+.foo."bar baz"
+
+---
+
+(source_file
+  (selector_expr
+    base: (selector_expr
+      property: (identifier))
+    property: (string)))

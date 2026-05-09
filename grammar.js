@@ -388,11 +388,11 @@ module.exports = grammar({
       prec.left(
         15,
         choice(
-          // Dot-prefixed selectors like .property, .property.property2, .[], .[][]
+          // Dot-prefixed selectors like .property, ."property", .property.property2, .[], .[][]
           seq(
             ".",
             choice(
-              field("property", $.identifier),
+              field("property", choice($.identifier, $.string)),
               seq("[", optional(field("index", $._primary_expr)), "]"),
               seq(
                 "[",
@@ -404,7 +404,7 @@ module.exports = grammar({
             ),
             repeat(
               choice(
-                seq(".", field("property", $.identifier)),
+                seq(".", field("property", choice($.identifier, $.string))),
                 seq("[", optional(field("index", $._primary_expr)), "]"),
                 seq(
                   "[",
@@ -421,7 +421,7 @@ module.exports = grammar({
             field("base", $._primary_expr),
             repeat1(
               choice(
-                seq(".", field("property", $.identifier)),
+                seq(".", field("property", choice($.identifier, $.string))),
                 seq("[", optional(field("index", $._primary_expr)), "]"),
                 seq(
                   "[",
