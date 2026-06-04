@@ -230,13 +230,11 @@ end
       name: (identifier)
       value: (pipe
         (string)
-        (call_expr
-          function: (identifier)
-          arguments: (argument_list
+        (quote_expr
+          body: (group_expr
             (binary_expr
               (identifier)
-              (call_expr
-                function: (identifier)
+              (unquote_expr
                 arguments: (argument_list
                   (identifier))))))))))
 

@@ -14,13 +14,19 @@
   "module"
   "match"
   "fn"
+  "->"
   "do"
   "var"
   "macro"
+  "try"
+  "catch"
+  "quote"
+  "unquote"
+  "as"
 ] @keyword
 
 ; Statement keywords
-(break_expr) @keyword
+(break_expr "break" @keyword)
 (continue_expr) @keyword
 
 ; Special identifiers
@@ -32,6 +38,7 @@
 (none) @constant.builtin
 (number) @number
 (string) @string
+(bytes) @string
 (symbol) @string.special.symbol
 
 ; Interpolated strings
@@ -61,9 +68,13 @@
   "*"
   "/"
   "%"
+  "@"
   "="
   "=="
   "!="
+  "=~"
+  "!~"
+  "??"
   "+="
   "-="
   "*="
@@ -81,6 +92,13 @@
   "|"
   "::"
 ] @operator
+
+; Environment variables
+(env_var) @variable.builtin
+
+; As binding
+(as_expr
+  name: (identifier) @variable)
 
 ; Punctuation
 [

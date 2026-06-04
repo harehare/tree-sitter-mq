@@ -24,11 +24,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -60,6 +68,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -80,7 +92,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -111,11 +131,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -147,6 +175,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -167,7 +199,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -186,6 +226,124 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "as_expr",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "assignment_expr",
+            "named": true
+          },
+          {
+            "type": "binary_expr",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "bytes",
+            "named": true
+          },
+          {
+            "type": "call_expr",
+            "named": true
+          },
+          {
+            "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
+            "named": true
+          },
+          {
+            "type": "function_expr",
+            "named": true
+          },
+          {
+            "type": "group_expr",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_access",
+            "named": true
+          },
+          {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
+            "type": "selector_call_expr",
+            "named": true
+          },
+          {
+            "type": "selector_expr",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "try_expr",
+            "named": true
+          },
+          {
+            "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -213,11 +371,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -249,6 +415,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -269,7 +439,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -300,11 +478,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -336,6 +522,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -356,7 +546,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -372,6 +570,10 @@
       "types": [
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "as_expr",
           "named": true
         },
         {
@@ -395,6 +597,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -408,6 +614,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -483,6 +693,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -503,7 +717,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -521,6 +743,125 @@
     "type": "boolean",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "break_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "assignment_expr",
+          "named": true
+        },
+        {
+          "type": "binary_expr",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "bytes",
+          "named": true
+        },
+        {
+          "type": "call_expr",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
+          "named": true
+        },
+        {
+          "type": "function_expr",
+          "named": true
+        },
+        {
+          "type": "group_expr",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "interpolated_string",
+          "named": true
+        },
+        {
+          "type": "nodes",
+          "named": true
+        },
+        {
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "pipe",
+          "named": true
+        },
+        {
+          "type": "qualified_access",
+          "named": true
+        },
+        {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
+          "type": "selector_call_expr",
+          "named": true
+        },
+        {
+          "type": "selector_expr",
+          "named": true
+        },
+        {
+          "type": "self",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "try_expr",
+          "named": true
+        },
+        {
+          "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "call_expr",
@@ -582,6 +923,10 @@
           "named": true
         },
         {
+          "type": "as_expr",
+          "named": true
+        },
+        {
           "type": "assignment_expr",
           "named": true
         },
@@ -602,6 +947,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -615,6 +964,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -690,6 +1043,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -710,7 +1067,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -778,11 +1143,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -814,6 +1187,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -834,7 +1211,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -882,11 +1267,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -918,6 +1311,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -938,7 +1335,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -949,6 +1354,10 @@
         "types": [
           {
             "type": "array",
+            "named": true
+          },
+          {
+            "type": "as_expr",
             "named": true
           },
           {
@@ -964,11 +1373,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -1008,6 +1425,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -1028,7 +1449,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -1060,11 +1489,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -1096,6 +1533,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -1116,7 +1557,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -1136,6 +1585,10 @@
             "named": true
           },
           {
+            "type": "as_expr",
+            "named": true
+          },
+          {
             "type": "assignment_expr",
             "named": true
           },
@@ -1148,11 +1601,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -1192,6 +1653,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -1212,7 +1677,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -1237,6 +1710,10 @@
           "named": true
         },
         {
+          "type": "as_expr",
+          "named": true
+        },
+        {
           "type": "assignment_expr",
           "named": true
         },
@@ -1257,6 +1734,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -1270,6 +1751,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -1345,6 +1830,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -1365,7 +1854,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -1392,6 +1889,10 @@
             "named": true
           },
           {
+            "type": "as_expr",
+            "named": true
+          },
+          {
             "type": "assignment_expr",
             "named": true
           },
@@ -1412,6 +1913,10 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
@@ -1425,6 +1930,10 @@
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -1500,6 +2009,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -1520,7 +2033,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           },
           {
@@ -1570,11 +2091,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -1606,6 +2135,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -1626,7 +2159,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -1645,6 +2186,10 @@
           "named": true
         },
         {
+          "type": "as_expr",
+          "named": true
+        },
+        {
           "type": "assignment_expr",
           "named": true
         },
@@ -1657,11 +2202,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -1701,6 +2254,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -1721,7 +2278,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -1752,11 +2317,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -1788,6 +2361,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -1808,7 +2385,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -1819,6 +2404,10 @@
         "types": [
           {
             "type": "array",
+            "named": true
+          },
+          {
+            "type": "as_expr",
             "named": true
           },
           {
@@ -1834,11 +2423,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -1878,6 +2475,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -1898,7 +2499,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -1999,11 +2608,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -2035,6 +2652,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -2055,7 +2676,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -2084,6 +2713,10 @@
             "named": true
           },
           {
+            "type": "as_expr",
+            "named": true
+          },
+          {
             "type": "assignment_expr",
             "named": true
           },
@@ -2096,11 +2729,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -2140,6 +2781,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -2160,7 +2805,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -2207,6 +2860,10 @@
           "named": true
         },
         {
+          "type": "as_expr",
+          "named": true
+        },
+        {
           "type": "assignment_expr",
           "named": true
         },
@@ -2227,6 +2884,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -2240,6 +2901,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -2315,6 +2980,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -2335,7 +3004,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -2374,11 +3051,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -2410,6 +3095,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -2430,7 +3119,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -2465,6 +3162,10 @@
           "named": true
         },
         {
+          "type": "as_expr",
+          "named": true
+        },
+        {
           "type": "assignment_expr",
           "named": true
         },
@@ -2485,6 +3186,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -2498,6 +3203,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -2573,6 +3282,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -2593,7 +3306,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -2632,11 +3353,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -2668,6 +3397,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -2688,7 +3421,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -2728,6 +3469,10 @@
             "named": true
           },
           {
+            "type": "as_expr",
+            "named": true
+          },
+          {
             "type": "assignment_expr",
             "named": true
           },
@@ -2740,11 +3485,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -2784,6 +3537,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -2804,7 +3561,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -2845,6 +3610,10 @@
           "named": true
         },
         {
+          "type": "as_expr",
+          "named": true
+        },
+        {
           "type": "assignment_expr",
           "named": true
         },
@@ -2865,6 +3634,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -2878,6 +3651,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -2953,6 +3730,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -2973,7 +3754,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -3047,11 +3836,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -3083,6 +3880,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -3103,7 +3904,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -3222,11 +4031,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -3258,6 +4075,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -3278,7 +4099,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
@@ -3314,6 +4143,114 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "quote_expr",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "assignment_expr",
+            "named": true
+          },
+          {
+            "type": "binary_expr",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "bytes",
+            "named": true
+          },
+          {
+            "type": "call_expr",
+            "named": true
+          },
+          {
+            "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
+            "named": true
+          },
+          {
+            "type": "function_expr",
+            "named": true
+          },
+          {
+            "type": "group_expr",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_access",
+            "named": true
+          },
+          {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
+            "type": "selector_call_expr",
+            "named": true
+          },
+          {
+            "type": "selector_expr",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "try_expr",
+            "named": true
+          },
+          {
+            "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -3387,11 +4324,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -3423,6 +4368,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -3443,7 +4392,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -3469,11 +4426,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -3505,6 +4470,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -3525,7 +4494,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -3551,11 +4528,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -3587,6 +4572,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -3607,7 +4596,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -3647,11 +4644,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -3683,6 +4688,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -3703,7 +4712,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -3721,6 +4738,10 @@
       "types": [
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "as_expr",
           "named": true
         },
         {
@@ -3744,6 +4765,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -3757,6 +4782,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -3832,6 +4861,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -3852,7 +4885,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -3864,6 +4905,216 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "try_expr",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "assignment_expr",
+            "named": true
+          },
+          {
+            "type": "binary_expr",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "bytes",
+            "named": true
+          },
+          {
+            "type": "call_expr",
+            "named": true
+          },
+          {
+            "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
+            "named": true
+          },
+          {
+            "type": "function_expr",
+            "named": true
+          },
+          {
+            "type": "group_expr",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_access",
+            "named": true
+          },
+          {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
+            "type": "selector_call_expr",
+            "named": true
+          },
+          {
+            "type": "selector_expr",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "try_expr",
+            "named": true
+          },
+          {
+            "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
+            "named": true
+          }
+        ]
+      },
+      "handler": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "assignment_expr",
+            "named": true
+          },
+          {
+            "type": "binary_expr",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "bytes",
+            "named": true
+          },
+          {
+            "type": "call_expr",
+            "named": true
+          },
+          {
+            "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
+            "named": true
+          },
+          {
+            "type": "function_expr",
+            "named": true
+          },
+          {
+            "type": "group_expr",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_access",
+            "named": true
+          },
+          {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
+            "type": "selector_call_expr",
+            "named": true
+          },
+          {
+            "type": "selector_expr",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "try_expr",
+            "named": true
+          },
+          {
+            "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -3891,11 +5142,19 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -3927,6 +5186,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -3947,10 +5210,34 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "unquote_expr",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -3976,6 +5263,10 @@
             "named": true
           },
           {
+            "type": "as_expr",
+            "named": true
+          },
+          {
             "type": "assignment_expr",
             "named": true
           },
@@ -3988,11 +5279,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -4032,6 +5331,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -4052,7 +5355,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -4103,6 +5414,10 @@
             "named": true
           },
           {
+            "type": "as_expr",
+            "named": true
+          },
+          {
             "type": "assignment_expr",
             "named": true
           },
@@ -4115,11 +5430,19 @@
             "named": true
           },
           {
+            "type": "bytes",
+            "named": true
+          },
+          {
             "type": "call_expr",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "env_var",
             "named": true
           },
           {
@@ -4159,6 +5482,10 @@
             "named": true
           },
           {
+            "type": "quote_expr",
+            "named": true
+          },
+          {
             "type": "selector_call_expr",
             "named": true
           },
@@ -4179,7 +5506,15 @@
             "named": true
           },
           {
+            "type": "try_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "unquote_expr",
             "named": true
           }
         ]
@@ -4191,6 +5526,10 @@
       "types": [
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "as_expr",
           "named": true
         },
         {
@@ -4214,6 +5553,10 @@
           "named": true
         },
         {
+          "type": "bytes",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -4227,6 +5570,10 @@
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
           "named": true
         },
         {
@@ -4302,6 +5649,10 @@
           "named": true
         },
         {
+          "type": "quote_expr",
+          "named": true
+        },
+        {
           "type": "selector_call_expr",
           "named": true
         },
@@ -4322,7 +5673,15 @@
           "named": true
         },
         {
+          "type": "try_expr",
+          "named": true
+        },
+        {
           "type": "unary_expr",
+          "named": true
+        },
+        {
+          "type": "unquote_expr",
           "named": true
         },
         {
@@ -4342,6 +5701,10 @@
   },
   {
     "type": "!=",
+    "named": false
+  },
+  {
+    "type": "!~",
     "named": false
   },
   {
@@ -4473,6 +5836,10 @@
     "named": false
   },
   {
+    "type": "??",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
   },
@@ -4485,8 +5852,20 @@
     "named": false
   },
   {
-    "type": "break_expr",
+    "type": "as",
+    "named": false
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
+    "type": "bytes",
     "named": true
+  },
+  {
+    "type": "catch",
+    "named": false
   },
   {
     "type": "comment",
@@ -4516,6 +5895,10 @@
   {
     "type": "end",
     "named": false
+  },
+  {
+    "type": "env_var",
+    "named": true
   },
   {
     "type": "escaped_dollar",
@@ -4582,6 +5965,10 @@
     "named": true
   },
   {
+    "type": "quote",
+    "named": false
+  },
+  {
     "type": "s\"",
     "named": false
   },
@@ -4606,8 +5993,16 @@
     "named": false
   },
   {
+    "type": "try",
+    "named": false
+  },
+  {
     "type": "type_pattern",
     "named": true
+  },
+  {
+    "type": "unquote",
+    "named": false
   },
   {
     "type": "var",
