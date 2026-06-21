@@ -394,9 +394,13 @@ module.exports = grammar({
     argument_list: ($) =>
       seq(
         "(",
-        optional(seq($._primary_expr, repeat(seq(",", $._primary_expr)))),
+        optional(seq($._argument, repeat(seq(",", $._argument)))),
         ")"
       ),
+
+    // Arguments may be a pipe expression (e.g. f(a | upcase, b | downcase)),
+    // which implicitly forms a block without needing `do .. end`.
+    _argument: ($) => choice($.pipe, $._primary_expr),
 
     // Selector expression
     selector_expr: ($) =>

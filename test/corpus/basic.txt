@@ -93,6 +93,25 @@ add(1, 2)
       (number))))
 
 ==================
+Function call with pipe argument
+==================
+
+f(a | upcase, b | downcase)
+
+---
+
+(source_file
+  (call_expr
+    function: (identifier)
+    arguments: (argument_list
+      (pipe
+        (identifier)
+        (identifier))
+      (pipe
+        (identifier)
+        (identifier)))))
+
+==================
 Foreach loop
 ==================
 
