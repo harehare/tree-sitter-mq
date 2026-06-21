@@ -2051,7 +2051,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_primary_expr"
+                  "name": "_argument"
                 },
                 {
                   "type": "REPEAT",
@@ -2064,7 +2064,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "_primary_expr"
+                        "name": "_argument"
                       }
                     ]
                   }
@@ -2079,6 +2079,19 @@
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "_argument": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "pipe"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_primary_expr"
         }
       ]
     },
