@@ -17,6 +17,7 @@ module.exports = grammar({
   conflicts: ($) => [
     [$._expression, $._primary_expr],
     [$.qualified_access],
+    [$.try_expr, $._primary_expr],
   ],
 
   rules: {
@@ -546,7 +547,7 @@ module.exports = grammar({
 
     none: (_) => "None",
 
-    // Try/catch expression: try: expr  or  try: expr catch: expr
+    // Try/catch expression: try: expr  or  try: expr catch: expr  or  try: expr catch(e): expr
     try_expr: ($) =>
       prec.right(seq(
         "try",
@@ -554,6 +555,7 @@ module.exports = grammar({
         field("body", $._primary_expr),
         optional(seq(
           "catch",
+          optional(prec.dynamic(1, seq("(", field("binder", $.identifier), ")"))),
           optional(choice(":", "do")),
           field("handler", $._primary_expr)
         ))

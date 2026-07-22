@@ -4915,6 +4915,16 @@
     "type": "try_expr",
     "named": true,
     "fields": {
+      "binder": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
       "body": {
         "multiple": false,
         "required": true,

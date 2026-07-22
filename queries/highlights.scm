@@ -61,6 +61,10 @@
 (rest_pattern
   variable: (identifier) @variable)
 
+; Try/catch error binder
+(try_expr
+  binder: (identifier) @variable.parameter)
+
 ; Operators
 [
   "+"
