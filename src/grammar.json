@@ -2949,6 +2949,39 @@
                     "type": "CHOICE",
                     "members": [
                       {
+                        "type": "PREC_DYNAMIC",
+                        "value": 1,
+                        "content": {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "STRING",
+                              "value": "("
+                            },
+                            {
+                              "type": "FIELD",
+                              "name": "binder",
+                              "content": {
+                                "type": "SYMBOL",
+                                "name": "identifier"
+                              }
+                            },
+                            {
+                              "type": "STRING",
+                              "value": ")"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
                         "type": "CHOICE",
                         "members": [
                           {
@@ -3097,6 +3130,10 @@
     ],
     [
       "qualified_access"
+    ],
+    [
+      "try_expr",
+      "_primary_expr"
     ]
   ],
   "precedences": [],

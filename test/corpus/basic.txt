@@ -459,3 +459,34 @@ end
     (match_arm
       pattern: (pattern (wildcard_pattern))
       body: (string))))
+
+==================
+Try/catch expression
+==================
+
+try: risky() catch: "fallback"
+
+---
+
+(source_file
+  (try_expr
+    body: (call_expr
+      function: (identifier)
+      arguments: (argument_list))
+    handler: (string)))
+
+==================
+Try/catch expression with error binder
+==================
+
+try: risky() catch(e): e
+
+---
+
+(source_file
+  (try_expr
+    body: (call_expr
+      function: (identifier)
+      arguments: (argument_list))
+    binder: (identifier)
+    handler: (identifier)))
