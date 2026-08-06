@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       node-addon-api:
-        specifier: ^8.9.0
-        version: 8.9.0
+        specifier: ^8.9.1
+        version: 8.9.1
       node-gyp-build:
         specifier: ^4.8.4
         version: 4.8.4
@@ -61,8 +61,8 @@ packages:
     resolution: {integrity: sha512-6u9UwL0HlAl21+agMN3YAMXcKByMqwGx+pq+P76vii5f7hTPtKDp08/H9py6DY+cfDw7kQNTGEj/rly3IgbNQA==}
     engines: {node: '>=10'}
 
-  node-addon-api@8.9.0:
-    resolution: {integrity: sha512-ekZMeaaIzSQTSpr7X2X3iJM7lTzgnx8ahAG9pJfT/7+14mlEM8ZYQ9cgCDvSSRbReFK0oHli3WrZdCiRsgAT9Q==}
+  node-addon-api@8.9.1:
+    resolution: {integrity: sha512-4eUQWVPCUUUiBjLnHS3cXWeC6ryoPUc0U3rP7IuzapoGbzMqd/r6KKO0clr0b+snQhsrueFEhCZDdK+LK7hxKg==}
     engines: {node: ^18 || ^20 || >= 21}
 
   node-gyp-build@4.8.4:
@@ -158,7 +158,7 @@ snapshots:
     dependencies:
       semver: 7.7.4
 
-  node-addon-api@8.9.0: {}
+  node-addon-api@8.9.1: {}
 
   node-gyp-build@4.8.4: {}
 
@@ -219,7 +219,7 @@ snapshots:
 
   tree-sitter@0.21.1:
     dependencies:
-      node-addon-api: 8.9.0
+      node-addon-api: 8.9.1
       node-gyp-build: 4.8.4
 
   util-deprecate@1.0.2: {}
