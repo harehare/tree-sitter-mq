@@ -7,6 +7,8 @@
   "else"
   "end"
   "while"
+  "until"
+  "unless"
   "loop"
   "foreach"
   "include"
@@ -17,11 +19,8 @@
   "->"
   "do"
   "var"
-  "macro"
   "try"
   "catch"
-  "quote"
-  "unquote"
   "as"
 ] @keyword
 
@@ -132,10 +131,6 @@
 ; Function definitions
 (def_expr
   name: (identifier) @function)
-
-; Macro definitions
-(macro_expr
-  name: (identifier) @function.macro)
 
 ; Function calls
 (call_expr

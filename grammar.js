@@ -34,12 +34,13 @@ module.exports = grammar({
         $.match_expr,
         $.foreach_expr,
         $.while_expr,
+        $.until_expr,
+        $.unless_expr,
         $.loop_expr,
         $.break_expr,
         $.continue_expr,
         $.include_expr,
         $.block_expr,
-        $.macro_expr,
         $._expression
       ),
 
@@ -236,23 +237,28 @@ module.exports = grammar({
         "end"
       ),
 
+    // Until loop: repeats while the condition is false (inverse of while)
+    until_expr: ($) =>
+      seq(
+        "until",
+        field("condition", $._expression),
+        ":",
+        repeat($._expr),
+        "end"
+      ),
+
+    // Unless expression: runs the body only when the condition is false
+    unless_expr: ($) =>
+      seq(
+        "unless",
+        field("condition", $._expression),
+        ":",
+        field("body", $._primary_expr)
+      ),
+
     loop_expr: ($) => seq("loop", ":", repeat($._expr), "end"),
 
     block_expr: ($) => seq("do", repeat($._expr), "end"),
-
-    macro_expr: ($) =>
-      seq(
-        "macro",
-        field("name", $.identifier),
-        optional(field("parameters", $.parameter_list)),
-        ":",
-        choice(
-          // Single expression form: macro name(): expr;
-          seq(field("body", $._primary_expr), ";"),
-          // Block form: macro name(): ... end
-          seq(repeat($._expr), "end")
-        )
-      ),
 
     // Control flow
     break_expr: ($) =>
@@ -272,8 +278,6 @@ module.exports = grammar({
         $.selector_expr,
         $.call_expr,
         $.try_expr,
-        $.quote_expr,
-        $.unquote_expr,
         $.array,
         $.dict,
         $.group_expr,
@@ -300,8 +304,6 @@ module.exports = grammar({
         $.selector_expr,
         $.call_expr,
         $.try_expr,
-        $.quote_expr,
-        $.unquote_expr,
         $.array,
         $.dict,
         $.group_expr,
@@ -560,14 +562,6 @@ module.exports = grammar({
           field("handler", $._primary_expr)
         ))
       )),
-
-    // Quote expression: quote: expr  (colon is optional)
-    quote_expr: ($) =>
-      prec.right(seq("quote", optional(":"), field("body", $._primary_expr))),
-
-    // Unquote expression: unquote(expr)
-    unquote_expr: ($) =>
-      seq("unquote", field("arguments", $.argument_list)),
 
     // As binding: expr as name
     as_expr: ($) =>
