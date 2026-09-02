@@ -22,8 +22,8 @@ importers:
         specifier: ^6.0.0
         version: 6.0.1
       tree-sitter-cli:
-        specifier: ^0.26.12
-        version: 0.26.12
+        specifier: ^0.26.13
+        version: 0.26.13
 
 packages:
 
@@ -109,8 +109,8 @@ packages:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
 
-  tree-sitter-cli@0.26.12:
-    resolution: {integrity: sha512-rIdMAm6nv75MVFoZ7UTaLVB1OG5h3ZSlCZEp5pne4gOUTalJIkL0A1NlYBg0oEl/d7gvIyc2Y5Jz8m5Xj+NOEw==}
+  tree-sitter-cli@0.26.13:
+    resolution: {integrity: sha512-SIC74lxT2jsygxaIGGb50Bpf8jtll24aXju98Y3eJienBTXCRQ+5k3YigwN31pASEUZKcKh98EPSZWky7ugUMA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
 
@@ -215,7 +215,7 @@ snapshots:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  tree-sitter-cli@0.26.12: {}
+  tree-sitter-cli@0.26.13: {}
 
   tree-sitter@0.21.1:
     dependencies:
