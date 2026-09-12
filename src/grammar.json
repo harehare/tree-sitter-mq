@@ -71,6 +71,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "yield_expr"
+        },
+        {
+          "type": "SYMBOL",
           "name": "include_expr"
         },
         {
@@ -1089,6 +1093,36 @@
     "continue_expr": {
       "type": "STRING",
       "value": "continue"
+    },
+    "yield_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "yield"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "_expression": {
       "type": "CHOICE",
