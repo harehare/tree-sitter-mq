@@ -27,6 +27,7 @@
 ; Statement keywords
 (break_expr "break" @keyword)
 (continue_expr) @keyword
+(yield_expr "yield" @keyword)
 
 ; Special identifiers
 (self) @variable.builtin

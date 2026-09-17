@@ -39,6 +39,7 @@ module.exports = grammar({
         $.loop_expr,
         $.break_expr,
         $.continue_expr,
+        $.yield_expr,
         $.include_expr,
         $.block_expr,
         $._expression
@@ -264,6 +265,10 @@ module.exports = grammar({
     break_expr: ($) =>
       seq("break", optional(seq(":", $._expression))),
     continue_expr: (_) => "continue",
+
+    // Generator yield: `yield: expr` yields expr, `yield` alone yields None
+    yield_expr: ($) =>
+      seq("yield", optional(seq(":", $._expression))),
 
     // Expressions
     _expression: ($) =>

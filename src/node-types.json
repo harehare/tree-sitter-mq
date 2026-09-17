@@ -695,6 +695,10 @@
         {
           "type": "while_expr",
           "named": true
+        },
+        {
+          "type": "yield_expr",
+          "named": true
         }
       ]
     }
@@ -1032,6 +1036,10 @@
         },
         {
           "type": "while_expr",
+          "named": true
+        },
+        {
+          "type": "yield_expr",
           "named": true
         }
       ]
@@ -1776,6 +1784,10 @@
         {
           "type": "while_expr",
           "named": true
+        },
+        {
+          "type": "yield_expr",
+          "named": true
         }
       ]
     }
@@ -1950,6 +1962,10 @@
           },
           {
             "type": "while_expr",
+            "named": true
+          },
+          {
+            "type": "yield_expr",
             "named": true
           }
         ]
@@ -2870,6 +2886,10 @@
         {
           "type": "while_expr",
           "named": true
+        },
+        {
+          "type": "yield_expr",
+          "named": true
         }
       ]
     }
@@ -3297,6 +3317,10 @@
         },
         {
           "type": "while_expr",
+          "named": true
+        },
+        {
+          "type": "yield_expr",
           "named": true
         }
       ]
@@ -4269,6 +4293,10 @@
         {
           "type": "while_expr",
           "named": true
+        },
+        {
+          "type": "yield_expr",
+          "named": true
         }
       ]
     }
@@ -5060,6 +5088,10 @@
         {
           "type": "while_expr",
           "named": true
+        },
+        {
+          "type": "yield_expr",
+          "named": true
         }
       ]
     }
@@ -5495,6 +5527,121 @@
         {
           "type": "while_expr",
           "named": true
+        },
+        {
+          "type": "yield_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "yield_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "assignment_expr",
+          "named": true
+        },
+        {
+          "type": "binary_expr",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "bytes",
+          "named": true
+        },
+        {
+          "type": "call_expr",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "env_var",
+          "named": true
+        },
+        {
+          "type": "function_expr",
+          "named": true
+        },
+        {
+          "type": "group_expr",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "interpolated_string",
+          "named": true
+        },
+        {
+          "type": "nodes",
+          "named": true
+        },
+        {
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "pipe",
+          "named": true
+        },
+        {
+          "type": "qualified_access",
+          "named": true
+        },
+        {
+          "type": "selector_call_expr",
+          "named": true
+        },
+        {
+          "type": "selector_expr",
+          "named": true
+        },
+        {
+          "type": "self",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "try_expr",
+          "named": true
+        },
+        {
+          "type": "unary_expr",
+          "named": true
         }
       ]
     }
@@ -5815,6 +5962,10 @@
   {
     "type": "wildcard_pattern",
     "named": true
+  },
+  {
+    "type": "yield",
+    "named": false
   },
   {
     "type": "{",

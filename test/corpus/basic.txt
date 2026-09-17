@@ -500,3 +500,68 @@ try: risky() catch(e): e
       arguments: (argument_list))
     binder: (identifier)
     handler: (identifier)))
+
+==================
+Yield without a value
+==================
+
+def g():
+  yield
+end
+
+---
+
+(source_file
+  (def_expr
+    name: (identifier)
+    parameters: (parameter_list)
+    (yield_expr)))
+
+==================
+Yield with a value
+==================
+
+def g(): yield: 1;
+
+---
+
+(source_file
+  (def_expr
+    name: (identifier)
+    parameters: (parameter_list)
+    (yield_expr
+      (number))))
+
+==================
+Generator function with a loop
+==================
+
+def range(n):
+  var i = 0
+  while (i < n):
+    yield: i
+    i += 1
+  end
+end
+
+---
+
+(source_file
+  (def_expr
+    name: (identifier)
+    parameters: (parameter_list
+      (parameter
+        name: (identifier)))
+    (var_expr
+      name: (identifier)
+      value: (number))
+    (while_expr
+      condition: (group_expr
+        (binary_expr
+          (identifier)
+          (identifier)))
+      (yield_expr
+        (identifier))
+      (assignment_expr
+        (identifier)
+        (number)))))
