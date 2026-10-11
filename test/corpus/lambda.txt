@@ -1,0 +1,337 @@
+==================
+Lambda without terminator as call argument
+==================
+
+f(fn(x): x + 1)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (binary_expr
+          (identifier)
+          (number))))))
+
+==================
+Lambda without terminator ends at comma
+==================
+
+f(fn(x): x, 1)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (identifier))
+      (number))))
+
+==================
+Lambda pipeline body ends at comma
+==================
+
+f(a, fn(x): x | g(.h), 1)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (identifier)
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (pipe
+          (identifier)
+          (call_expr
+            (identifier)
+            (argument_list
+              (selector_expr
+                (identifier))))))
+      (number))))
+
+==================
+Two lambdas without terminator
+==================
+
+f(fn(x): x + 1, fn(x): x * 2)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (binary_expr
+          (identifier)
+          (number)))
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (binary_expr
+          (identifier)
+          (number))))))
+
+==================
+Arrow lambda without terminator
+==================
+
+f(->(x): x + 1)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (binary_expr
+          (identifier)
+          (number))))))
+
+==================
+Lambda without parameter list
+==================
+
+f(fn: self + 1, 2)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (binary_expr
+          (self)
+          (number)))
+      (number))))
+
+==================
+Lambda ends at closing bracket
+==================
+
+[fn(x): x, 1]
+
+---
+
+(source_file
+  (array
+    (function_expr
+      (parameter_list
+        (parameter
+          (identifier)))
+      (identifier))
+    (number)))
+
+==================
+Lambda ends at closing brace
+==================
+
+{"a": fn(x): x}
+
+---
+
+(source_file
+  (dict
+    (dict_entry
+      (string)
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (identifier)))))
+
+==================
+Lambda in group
+==================
+
+(fn(x): x + 1)
+
+---
+
+(source_file
+  (group_expr
+    (function_expr
+      (parameter_list
+        (parameter
+          (identifier)))
+      (binary_expr
+        (identifier)
+        (number)))))
+
+==================
+Lambda with if else body
+==================
+
+f(fn(x): if (x): 1 else: 2, 3)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (if_expr
+          (group_expr
+            (identifier))
+          (number)
+          (else_clause
+            (number))))
+      (number))))
+
+==================
+Lambda with semicolon terminator in call
+==================
+
+f(fn(x): x;, 1)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (identifier))
+      (number))))
+
+==================
+Lambda with end terminator in call
+==================
+
+f(fn(x): x end, 1)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (identifier))
+      (number))))
+
+==================
+Lambda terminated by EOF
+==================
+
+let g = fn(x): x + 1
+
+---
+
+(source_file
+  (let_expr
+    (identifier)
+    (function_expr
+      (parameter_list
+        (parameter
+          (identifier)))
+      (binary_expr
+        (identifier)
+        (number)))))
+
+==================
+Lambda after pipe in call argument
+==================
+
+f(1 | fn(x): x + 1, 2)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (pipe
+        (number)
+        (function_expr
+          (parameter_list
+            (parameter
+              (identifier)))
+          (binary_expr
+            (identifier)
+            (number))))
+      (number))))
+
+==================
+Curried lambda
+==================
+
+f(fn(x): fn(y): x + y)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (function_expr
+          (parameter_list
+            (parameter
+              (identifier)))
+          (binary_expr
+            (identifier)
+            (identifier)))))))
+
+==================
+Lambda body with multiple statements
+==================
+
+f(fn(x): let y = x + 1 | y * 2, 3)
+
+---
+
+(source_file
+  (call_expr
+    (identifier)
+    (argument_list
+      (function_expr
+        (parameter_list
+          (parameter
+            (identifier)))
+        (let_expr
+          (identifier)
+          (pipe
+            (binary_expr
+              (identifier)
+              (number))
+            (binary_expr
+              (identifier)
+              (number)))))
+      (number))))

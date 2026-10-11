@@ -16,8 +16,10 @@ module.exports = grammar({
 
   conflicts: ($) => [
     [$._expression, $._primary_expr],
+    [$._expression, $._operand],
+    [$._primary_expr, $.assignment_expr],
     [$.qualified_access],
-    [$.try_expr, $._primary_expr],
+    [$.try_expr, $._operand],
   ],
 
   rules: {
@@ -88,45 +90,46 @@ module.exports = grammar({
 
     // Let statement
     let_expr: ($) =>
-      seq(
+      prec.right(seq(
         "let",
         field("name", $.identifier),
         "=",
         field("value", $._expression)
-      ),
+      )),
 
     // Var statement
     var_expr: ($) =>
-      seq(
+      prec.right(seq(
         "var",
         field("name", $.identifier),
         "=",
         field("value", $._expression)
-      ),
+      )),
 
     // Include statement
     include_expr: ($) => seq("include", field("path", $.string)),
 
     // If statement
     if_expr: ($) =>
-      seq(
+      prec.right(seq(
         "if",
         field("condition", $._expression),
         ":",
         field("body", $._primary_expr),
         repeat($.elif_clause),
         optional($.else_clause)
-      ),
+      )),
 
     elif_clause: ($) =>
-      seq(
+      prec.right(seq(
         "elif",
         field("condition", $._expression),
         ":",
         field("body", $._primary_expr)
-      ),
+      )),
 
-    else_clause: ($) => seq("else", ":", field("body", $._primary_expr)),
+    else_clause: ($) =>
+      prec.right(seq("else", ":", field("body", $._primary_expr))),
 
     // Match statement
     match_expr: ($) =>
@@ -250,12 +253,12 @@ module.exports = grammar({
 
     // Unless expression: runs the body only when the condition is false
     unless_expr: ($) =>
-      seq(
+      prec.right(seq(
         "unless",
         field("condition", $._expression),
         ":",
         field("body", $._primary_expr)
-      ),
+      )),
 
     loop_expr: ($) => seq("loop", ":", repeat($._expr), "end"),
 
@@ -263,12 +266,12 @@ module.exports = grammar({
 
     // Control flow
     break_expr: ($) =>
-      seq("break", optional(seq(":", $._expression))),
+      prec.right(seq("break", optional(seq(":", $._expression)))),
     continue_expr: (_) => "continue",
 
     // Generator yield: `yield: expr` yields expr, `yield` alone yields None
     yield_expr: ($) =>
-      seq("yield", optional(seq(":", $._expression))),
+      prec.right(seq("yield", optional(seq(":", $._expression)))),
 
     // Expressions
     _expression: ($) =>
@@ -297,9 +300,13 @@ module.exports = grammar({
 
     // Pipe (lowest precedence to allow multi-line pipes)
     pipe: ($) =>
-      prec.left(1, seq($._primary_expr, repeat1(seq("|", $._primary_expr)))),
+      prec.left(1, seq($._operand, repeat1(seq("|", $._primary_expr)))),
 
-    _primary_expr: ($) =>
+    _primary_expr: ($) => choice($._operand, $.function_expr),
+
+    // Operand on the left of an operator: a lambda is excluded because its unterminated
+    // body extends as far right as possible (`fn(x): x + 1` is not `(fn(x): x) + 1`).
+    _operand: ($) =>
       choice(
         $.assignment_expr,
         $.binary_expr,
@@ -312,7 +319,6 @@ module.exports = grammar({
         $.array,
         $.dict,
         $.group_expr,
-        $.function_expr,
         $.interpolated_string,
         $.env_var,
         $.identifier,
@@ -323,46 +329,46 @@ module.exports = grammar({
     // Binary expressions
     binary_expr: ($) =>
       choice(
-        prec.left(10, seq($._primary_expr, "+", $._primary_expr)),
-        prec.left(10, seq($._primary_expr, "-", $._primary_expr)),
-        prec.left(10, seq($._primary_expr, ">>", $._primary_expr)),
-        prec.left(10, seq($._primary_expr, "<<", $._primary_expr)),
-        prec.left(11, seq($._primary_expr, "*", $._primary_expr)),
-        prec.left(11, seq($._primary_expr, "/", $._primary_expr)),
-        prec.left(11, seq($._primary_expr, "%", $._primary_expr)),
-        prec.left(11, seq($._primary_expr, "@", $._primary_expr)),
-        prec.left(5, seq($._primary_expr, "==", $._primary_expr)),
-        prec.left(5, seq($._primary_expr, "!=", $._primary_expr)),
-        prec.left(5, seq($._primary_expr, "=~", $._primary_expr)),
-        prec.left(5, seq($._primary_expr, "!~", $._primary_expr)),
-        prec.left(6, seq($._primary_expr, "<", $._primary_expr)),
-        prec.left(6, seq($._primary_expr, "<=", $._primary_expr)),
-        prec.left(6, seq($._primary_expr, ">", $._primary_expr)),
-        prec.left(6, seq($._primary_expr, ">=", $._primary_expr)),
-        prec.left(3, seq($._primary_expr, "&&", $._primary_expr)),
-        prec.left(2, seq($._primary_expr, "||", $._primary_expr)),
-        prec.left(7, seq($._primary_expr, "..", $._primary_expr)),
-        prec.left(8, seq($._primary_expr, "??", $._primary_expr))
+        prec.left(10, seq($._operand, "+", $._primary_expr)),
+        prec.left(10, seq($._operand, "-", $._primary_expr)),
+        prec.left(10, seq($._operand, ">>", $._primary_expr)),
+        prec.left(10, seq($._operand, "<<", $._primary_expr)),
+        prec.left(11, seq($._operand, "*", $._primary_expr)),
+        prec.left(11, seq($._operand, "/", $._primary_expr)),
+        prec.left(11, seq($._operand, "%", $._primary_expr)),
+        prec.left(11, seq($._operand, "@", $._primary_expr)),
+        prec.left(5, seq($._operand, "==", $._primary_expr)),
+        prec.left(5, seq($._operand, "!=", $._primary_expr)),
+        prec.left(5, seq($._operand, "=~", $._primary_expr)),
+        prec.left(5, seq($._operand, "!~", $._primary_expr)),
+        prec.left(6, seq($._operand, "<", $._primary_expr)),
+        prec.left(6, seq($._operand, "<=", $._primary_expr)),
+        prec.left(6, seq($._operand, ">", $._primary_expr)),
+        prec.left(6, seq($._operand, ">=", $._primary_expr)),
+        prec.left(3, seq($._operand, "&&", $._primary_expr)),
+        prec.left(2, seq($._operand, "||", $._primary_expr)),
+        prec.left(7, seq($._operand, "..", $._primary_expr)),
+        prec.left(8, seq($._operand, "??", $._primary_expr))
       ),
 
     // Assignment expressions
     assignment_expr: ($) =>
       choice(
-        prec.right(0, seq($._primary_expr, "=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "|=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "+=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "-=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "*=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "/=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "%=", $._primary_expr)),
-        prec.right(0, seq($._primary_expr, "//=", $._primary_expr))
+        prec.right(0, seq($._operand, "=", $._primary_expr)),
+        prec.right(0, seq($._operand, "|=", $._primary_expr)),
+        prec.right(0, seq($._operand, "+=", $._primary_expr)),
+        prec.right(0, seq($._operand, "-=", $._primary_expr)),
+        prec.right(0, seq($._operand, "*=", $._primary_expr)),
+        prec.right(0, seq($._operand, "/=", $._primary_expr)),
+        prec.right(0, seq($._operand, "%=", $._primary_expr)),
+        prec.right(0, seq($._operand, "//=", $._primary_expr))
       ),
 
     // Unary expressions
     unary_expr: ($) =>
       choice(
-        prec(12, seq("!", $._primary_expr)),
-        prec(12, seq("-", $._primary_expr))
+        prec(12, seq("!", $._operand)),
+        prec(12, seq("-", $._operand))
       ),
 
     // Qualified access expression (module::function or module::function())
@@ -475,12 +481,15 @@ module.exports = grammar({
 
     // Function expression
     function_expr: ($) =>
-      seq(
-        choice("fn", "->"),
-        optional(field("parameters", $.parameter_list)),
-        ":",
-        repeat1(field("body", $._expr)),
-        choice(";", "end")
+      prec.right(
+        seq(
+          choice("fn", "->"),
+          optional(field("parameters", $.parameter_list)),
+          ":",
+          repeat1(field("body", $._expr)),
+          // The terminator can be omitted when the body is followed by `,`, `)`, `]`, `}` or EOF.
+          optional(choice(";", "end"))
+        )
       ),
 
     // Group expression
@@ -571,7 +580,7 @@ module.exports = grammar({
     // As binding: expr as name
     as_expr: ($) =>
       prec.right(1, seq(
-        field("value", $._primary_expr),
+        field("value", $._operand),
         "as",
         field("name", $.identifier)
       )),
