@@ -267,10 +267,6 @@
             "named": true
           },
           {
-            "type": "function_expr",
-            "named": true
-          },
-          {
             "type": "group_expr",
             "named": true
           },
@@ -4543,10 +4539,6 @@
         },
         {
           "type": "env_var",
-          "named": true
-        },
-        {
-          "type": "function_expr",
           "named": true
         },
         {
