@@ -565,3 +565,140 @@ end
       (assignment_expr
         (identifier)
         (number)))))
+
+==================
+Precedence: coalesce below additive
+==================
+
+a ?? b + c
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (binary_expr
+      (identifier)
+      (identifier))))
+
+==================
+Precedence: coalesce below and
+==================
+
+a && b ?? c
+
+---
+
+(source_file
+  (binary_expr
+    (binary_expr
+      (identifier)
+      (identifier))
+    (identifier)))
+
+==================
+Precedence: coalesce above or
+==================
+
+a || b ?? c
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (binary_expr
+      (identifier)
+      (identifier))))
+
+==================
+Precedence: convert above multiplicative
+==================
+
+a * b @ c
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (binary_expr
+      (identifier)
+      (identifier))))
+
+==================
+Precedence: convert below range
+==================
+
+a @ b .. c
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (binary_expr
+      (identifier)
+      (identifier))))
+
+==================
+Precedence: comparison operators share a level
+==================
+
+a < b == c
+
+---
+
+(source_file
+  (binary_expr
+    (binary_expr
+      (identifier)
+      (identifier))
+    (identifier)))
+
+==================
+Precedence: left associative
+==================
+
+a - b - c
+
+---
+
+(source_file
+  (binary_expr
+    (binary_expr
+      (identifier)
+      (identifier))
+    (identifier)))
+
+==================
+Precedence: multiplicative above additive
+==================
+
+a * b + c
+
+---
+
+(source_file
+  (binary_expr
+    (binary_expr
+      (identifier)
+      (identifier))
+    (identifier)))
+
+==================
+Lambda as right operand
+==================
+
+a + fn(x): x;
+
+---
+
+(source_file
+  (binary_expr
+    (identifier)
+    (function_expr
+      (parameter_list
+        (parameter
+          (identifier)))
+      (identifier))))
